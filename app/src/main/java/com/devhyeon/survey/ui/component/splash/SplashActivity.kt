@@ -16,12 +16,12 @@ import com.devhyeon.survey.ui.component.login.LoginActivity
  * */
 
 class SplashActivity : BaseActivity() {
-    private lateinit var binding: ActivitySplashBinding
+    private lateinit var xml: ActivitySplashBinding
 
     override fun observeViewModel() {}
     override fun initViewBinding() {
-        binding = ActivitySplashBinding.inflate(layoutInflater)
-        val view = binding.root
+        xml = ActivitySplashBinding.inflate(layoutInflater)
+        val view = xml.root
         setContentView(view)
     }
 

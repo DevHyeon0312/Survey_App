@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">설문조사</string>
-    <string name="action_sign_in">로그인</string>
-
+    <string name="login_start">시작하기</string>
+    <string name="login_message">회원가입은 필요없어요!\n바로 시작하기를 클릭해주세요 :) </string>
     <!-- Error -->
     <string name="no_internet">인터넷 연결이 되어 있지 않습니다.</string>
     <string name="network_error">네트워크 상태가 불안정합니다.</string>
+    <string name="default_error">일시적인 문제가 발생하였습니다. 잠시 후 다시 시도해주세요.</string>
+
 </resources>

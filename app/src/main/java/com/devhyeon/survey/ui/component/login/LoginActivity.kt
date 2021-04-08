@@ -1,77 +1,77 @@
 package com.devhyeon.survey.ui.component.login
 
+import android.content.Intent
 import android.os.Bundle
+import com.devhyeon.survey.R
 import com.devhyeon.survey.databinding.ActivityLoginBinding
 import com.devhyeon.survey.ui.base.BaseActivity
-import com.devhyeon.survey.utils.Status
+import com.devhyeon.survey.ui.component.home.HomeActivity
+import com.devhyeon.survey.utils.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
+/**
+ * Created By DevHyeon on 2021.04.08
+ * 로그인 화면 : 인터넷이 연결되어 있는 경우에 현재시간을 받아오며, 처음 로그인하는 시간을 ID 로 사용합니다. (SharedPreferences)
+ * */
 class LoginActivity : BaseActivity() {
     private val loginViewModel: LoginViewModel by viewModel()
-    private lateinit var binding: ActivityLoginBinding
+    private lateinit var xml: ActivityLoginBinding
 
     override fun observeViewModel() {
         loginObserve()
     }
     override fun initViewBinding() {
-        binding = ActivityLoginBinding.inflate(layoutInflater)
-        val view = binding.root
+        xml = ActivityLoginBinding.inflate(layoutInflater)
+        val view = xml.root
         setContentView(view)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding.login.setOnClickListener { doLogin() }
+        xml.login.setOnClickListener { doLogin() }
     }
 
     /** 로그인 시도 */
     private fun doLogin() {
-        loginViewModel.doLogin("202104081631001")
+        loginViewModel.doLogin()
     }
 
     private fun loginObserve() {
         loginViewModel.loginData.observe(this) {
             when(it) {
-                is Status.Run -> System.out.println("Loading..")
-                is Status.Success -> System.out.println("Success")
-                is Status.Failure -> System.out.println("Failure")
+                is Status.Run -> {
+                    System.out.println("Run"+it.data)
+                    xml.loaderView.toVisible()
+                    xml.login.toGone()
+                    xml.message.toGone()
+                }
+                is Status.Success -> {
+                    System.out.println("Success"+it.data)
+                    xml.loaderView.toGone()
+                    navigateToHomeScreen()
+                }
+                is Status.Failure -> {
+                    System.out.println("Failure"+it.data+":"+it.errorCode)
+                    if (it.errorCode == 1) {
+                        xml.loaderView.toGone()
+                        xml.login.toVisible()
+                        xml.message.toVisible()
+                        xml.root.showSnackbar(getString(R.string.default_error),1000)
+                    } else if (it.errorCode == 2) {
+                        xml.loaderView.toGone()
+                        xml.login.toVisible()
+                        xml.message.toVisible()
+                        xml.root.showSnackbar(getString(R.string.no_internet),1000)
+                    }
+                }
             }
         }
     }
 
-//
-//
-//
-//
-
-//
-//    /** 로그인 결과 처리 */
-//    private fun handleLoginResult(status: Resource<LoginResponse>) {
-//        when (status) {
-//            is Resource.Loading -> {
-//                binding.loaderView.toVisible()
-//            }
-//            is Resource.Success -> status.data?.let {
-//                binding.loaderView.toGone()
-//                navigateToHomeScreen()
-//            }
-//            is Resource.DataError -> {
-//                binding.loaderView.toGone()
-////                status.errorCode?.let {
-////                    loginViewModel.showSnackBarMessage(it)
-////                }
-//            }
-//        }
-//    }
-//
-//    /** 홈화면으로 이동 */
-//    private fun navigateToHomeScreen() {
-//        val nextScreenIntent = Intent(this, HomeActivity::class.java)
-//        startActivity(nextScreenIntent)
-//        finish()
-//    }
-//
-//    private fun observeSnackBarMessages(event: LiveData<SingleEvent<Any>>) {
-//        binding.root.setupSnackbar(this, event, Snackbar.LENGTH_LONG)
-//    }
+    /** 홈화면으로 이동 */
+    private fun navigateToHomeScreen() {
+        val nextScreenIntent = Intent(this, HomeActivity::class.java)
+        startActivity(nextScreenIntent)
+        finish()
+    }
 }
