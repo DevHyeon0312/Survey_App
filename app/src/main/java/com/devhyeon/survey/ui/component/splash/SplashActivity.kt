@@ -7,6 +7,7 @@ import android.os.Looper
 import com.devhyeon.survey.SPLASH_DELAY
 import com.devhyeon.survey.databinding.ActivitySplashBinding
 import com.devhyeon.survey.ui.base.BaseActivity
+import com.devhyeon.survey.ui.component.home.HomeActivity
 import com.devhyeon.survey.ui.component.login.LoginActivity
 
 
@@ -33,7 +34,8 @@ class SplashActivity : BaseActivity() {
     /** 로그인 화면으로 이동 */
     private fun navigateToLoginScreen() {
         Handler(Looper.getMainLooper()).postDelayed({
-            val nextScreenIntent = Intent(this, LoginActivity::class.java)
+//            val nextScreenIntent = Intent(this, LoginActivity::class.java)
+            val nextScreenIntent = Intent(this, HomeActivity::class.java)
             startActivity(nextScreenIntent)
             finish()
         }, SPLASH_DELAY.toLong())

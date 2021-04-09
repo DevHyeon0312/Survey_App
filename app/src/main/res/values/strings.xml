@@ -7,4 +7,8 @@
     <string name="network_error">네트워크 상태가 불안정합니다.</string>
     <string name="default_error">일시적인 문제가 발생하였습니다. 잠시 후 다시 시도해주세요.</string>
 
+    <!-- Menu -->
+    <string name="menu_home">홈</string>
+    <string name="menu_survey">설문참여</string>
+    <string name="menu_info">정보</string>
 </resources>
