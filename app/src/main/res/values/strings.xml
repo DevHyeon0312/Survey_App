@@ -10,5 +10,5 @@
     <!-- Menu -->
     <string name="menu_home">홈</string>
     <string name="menu_survey">설문참여</string>
-    <string name="menu_info">정보</string>
+    <string name="menu_info">개발정보</string>
 </resources>
