@@ -10,14 +10,4 @@ import androidx.fragment.app.Fragment
 
 abstract class BaseFragment : Fragment() {
     abstract fun observeViewModel()
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        observeViewModel()
-        return super.onCreateView(inflater, container, savedInstanceState)
-    }
-
 }

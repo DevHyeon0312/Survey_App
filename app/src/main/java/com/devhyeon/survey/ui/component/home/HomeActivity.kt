@@ -1,19 +1,18 @@
 package com.devhyeon.survey.ui.component.home
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import com.devhyeon.survey.R
 import com.devhyeon.survey.databinding.ActivityHomeBinding
 import com.devhyeon.survey.ui.base.BaseActivity
-import com.devhyeon.survey.ui.base.BaseFragment
 import com.devhyeon.survey.ui.component.home.fragment.HomeFragment
 import com.devhyeon.survey.ui.component.home.fragment.InfoFragment
 import com.devhyeon.survey.ui.component.home.fragment.SurveyFragment
-import com.devhyeon.survey.ui.component.login.LoginViewModel
 import com.devhyeon.survey.utils.Status
 import kotlinx.android.synthetic.main.activity_home.*
 import org.koin.android.viewmodel.ext.android.viewModel
+import java.util.*
 
 class HomeActivity : BaseActivity() {
     private lateinit var xml: ActivityHomeBinding
@@ -46,23 +45,24 @@ class HomeActivity : BaseActivity() {
     }
 
     private fun navigationObserve() {
-        homeViewModel.navigationData.observe(this) {
-            when(it) {
-                is Status.Run -> {}
-                is Status.Success -> {
-                    when(it.data) {
-                        1 -> changeFragment(homeFragment)
-                        2 -> changeFragment(surveyFragment)
-                        3 -> changeFragment(infoFragment)
+        with(homeViewModel) {
+            navigationData.observe(this@HomeActivity, Observer {
+                when(it) {
+                    is Status.Run -> {}
+                    is Status.Success -> {
+                        when(it.data) {
+                            1 -> changeFragment(homeFragment)
+                            2 -> changeFragment(surveyFragment)
+                            3 -> changeFragment(infoFragment)
+                        }
                     }
+                    is Status.Failure -> {}
                 }
-                is Status.Failure -> {}
-            }
+            })
         }
     }
 
     private fun changeFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().replace(R.id.fl_container, fragment).commit()
     }
-
 }

@@ -1,6 +1,11 @@
 package com.devhyeon.survey.di
 
 import com.devhyeon.survey.BASE_URL
+import com.devhyeon.survey.network.repository.SurveyRepository
+import com.devhyeon.survey.network.repository.SurveyRepositoryImp
+import com.devhyeon.survey.network.service.SurveyService
+import com.devhyeon.survey.usecase.SurveyDetail
+import com.devhyeon.survey.usecase.SurveyTitle
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -9,23 +14,21 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 
 import com.squareup.moshi.Moshi
-import org.koin.android.viewmodel.dsl.viewModel
-import org.koin.dsl.module
 
 private const val TIME_OUT = 30L
 
 val NetworkModule = module {
-//    single { createService(get()) }
-//
-//    single { createRetrofit(get(), BASE_URL) }
-//
-//    single { createOkHttpClient() }
-//
-//    single { MoshiConverterFactory.create() }
-//
-//    single { Moshi.Builder().build() }
+    single { createService(get()) }
 
+    single { createRetrofit(get(), BASE_URL) }
+
+    single { createOkHttpClient() }
+
+    single { MoshiConverterFactory.create() }
+
+    single { Moshi.Builder().build() }
 }
+
 fun createOkHttpClient(): OkHttpClient {
     val httpLoggingInterceptor = HttpLoggingInterceptor()
     httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BASIC
@@ -42,14 +45,18 @@ fun createRetrofit(okHttpClient: OkHttpClient, url: String): Retrofit {
         .addConverterFactory(MoshiConverterFactory.create()).build()
 }
 
-//fun createService(retrofit: Retrofit): ApiService {
-//    return retrofit.create(ApiService::class.java)
-//}
-//
-//fun createPostRepository(apiService: ApiService): PostsRepository {
-//    return PostsRepositoryImp(apiService)
-//}
-//
-//fun createGetPostsUseCase(postsRepository: PostsRepository): GetPostsUseCase {
-//    return GetPostsUseCase(postsRepository)
-//}
+fun createService(retrofit: Retrofit): SurveyService {
+    return retrofit.create(SurveyService::class.java)
+}
+
+fun createSurveyRepository(apiService: SurveyService): SurveyRepository {
+    return SurveyRepositoryImp(apiService)
+}
+
+fun createSurveyTitle(surveyRepository: SurveyRepository): SurveyTitle {
+    return SurveyTitle(surveyRepository)
+}
+
+fun createSurveyDetail(surveyRepository: SurveyRepository): SurveyDetail {
+    return SurveyDetail(surveyRepository)
+}

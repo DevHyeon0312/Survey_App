@@ -28,39 +28,28 @@ class LoginActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        xml.login.setOnClickListener { doLogin() }
-    }
-
-    /** 로그인 시도 */
-    private fun doLogin() {
-        loginViewModel.doLogin()
+        xml.login.setOnClickListener { loginViewModel.doLogin() }
     }
 
     private fun loginObserve() {
         loginViewModel.loginData.observe(this) {
             when(it) {
                 is Status.Run -> {
-                    System.out.println("Run"+it.data)
                     xml.loaderView.toVisible()
                     xml.login.toGone()
                     xml.message.toGone()
                 }
                 is Status.Success -> {
-                    System.out.println("Success"+it.data)
                     xml.loaderView.toGone()
                     navigateToHomeScreen()
                 }
                 is Status.Failure -> {
-                    System.out.println("Failure"+it.data+":"+it.errorCode)
+                    xml.loaderView.toGone()
+                    xml.login.toVisible()
+                    xml.message.toVisible()
                     if (it.errorCode == 1) {
-                        xml.loaderView.toGone()
-                        xml.login.toVisible()
-                        xml.message.toVisible()
                         xml.root.showSnackbar(getString(R.string.default_error),1000)
                     } else if (it.errorCode == 2) {
-                        xml.loaderView.toGone()
-                        xml.login.toVisible()
-                        xml.message.toVisible()
                         xml.root.showSnackbar(getString(R.string.no_internet),1000)
                     }
                 }
