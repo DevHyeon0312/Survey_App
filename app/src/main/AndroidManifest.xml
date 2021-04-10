@@ -30,6 +30,11 @@
 
         <activity android:name=".ui.component.home.HomeActivity">
         </activity>
+
+        <activity android:name=".ui.component.create.CreateActivity">
+        </activity>
+
+
     </application>
 
 </manifest>

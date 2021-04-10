@@ -6,6 +6,7 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.devhyeon.survey.R
 import com.devhyeon.survey.databinding.FragmentHomeInfoBinding
@@ -23,7 +24,7 @@ class SurveyFragment(val surveyViewModel : SurveyViewModel) : BaseFragment() {
     private var _binding: FragmentHomeSurveyBinding? = null
     private val xml get() = _binding!!
 
-    private var adapter : TitlesAdapter = TitlesAdapter()
+    private var mAdapter: TitlesAdapter? = TitlesAdapter()
 
     override fun observeViewModel() {
         surveyObserve()
@@ -38,10 +39,11 @@ class SurveyFragment(val surveyViewModel : SurveyViewModel) : BaseFragment() {
 
         observeViewModel()
 
-        xml.rvTitles.adapter = adapter
+        xml.rvTitles.adapter = mAdapter
 
         return xml.root
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -53,20 +55,16 @@ class SurveyFragment(val surveyViewModel : SurveyViewModel) : BaseFragment() {
             when (it) {
                 is Status.Run -> {
                     xml.loaderView.toVisible()
-                    xml.rvTitles.toGone()
+                    xml.titlesView.toGone()
                 }
                 is Status.Success -> {
-//                    for (survey:Survey in it.data!!) {
-//                        xml.textView.text = survey.title
-//                    }
                     xml.loaderView.toGone()
-                    xml.rvTitles.toVisible()
-
-                    it.data!!
+                    xml.titlesView.toVisible()
+                    mAdapter?.mPostList = it.data!!
                 }
                 is Status.Failure -> {
                     xml.loaderView.toVisible()
-                    xml.rvTitles.toGone()
+                    xml.titlesView.toGone()
                 }
             }
         })

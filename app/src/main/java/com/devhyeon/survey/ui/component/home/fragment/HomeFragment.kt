@@ -1,5 +1,7 @@
 package com.devhyeon.survey.ui.component.home.fragment
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +9,8 @@ import android.view.ViewGroup
 import com.devhyeon.survey.R
 import com.devhyeon.survey.databinding.FragmentHomeHomeBinding
 import com.devhyeon.survey.ui.base.BaseFragment
+import com.devhyeon.survey.ui.component.create.CreateActivity
+import com.devhyeon.survey.ui.component.home.HomeActivity
 
 
 class HomeFragment : BaseFragment() {
@@ -23,12 +27,21 @@ class HomeFragment : BaseFragment() {
         savedInstanceState: Bundle?,
     ): View? {
         _binding = FragmentHomeHomeBinding.inflate(inflater, container, false)
-        xml.textView.text="This is HomeFragment"
+        xml.textView.text="어서오세요,\n설문생성과 참여로 마음껏 즐겨보세요"
+        xml.button2.setOnClickListener { navigateToCreateScreen() }
         return xml.root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    /** 홈화면으로 이동 */
+    private fun navigateToCreateScreen() {
+        activity?.let{
+            val intent = Intent (it, CreateActivity::class.java)
+            it.startActivity(intent)
+        }
     }
 }
