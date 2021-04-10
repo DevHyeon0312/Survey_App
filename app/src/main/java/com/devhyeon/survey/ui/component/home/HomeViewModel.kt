@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.devhyeon.survey.R
+import com.devhyeon.survey.ui.component.login.LoginViewModel
 import com.devhyeon.survey.utils.Status
 import kotlinx.coroutines.launch
 
@@ -33,5 +34,9 @@ class HomeViewModel : ViewModel(){
                 navigationData.value = Status.Failure(-1)
             }
         }
+    }
+
+    companion object {
+        private val TAG = HomeViewModel::class.java.name
     }
 }

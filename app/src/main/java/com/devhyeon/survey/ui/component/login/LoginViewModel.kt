@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.devhyeon.survey.SPLASH_DELAY
+import com.devhyeon.survey.network.SurveyViewModel
 import com.devhyeon.survey.utils.*
 import kotlinx.coroutines.*
 
@@ -33,5 +34,9 @@ class LoginViewModel(private val ctx: Context) : ViewModel() {
                 loginData.value = Status.Failure(2)
             }
         }
+    }
+
+    companion object {
+        private val TAG = LoginViewModel::class.java.name
     }
 }

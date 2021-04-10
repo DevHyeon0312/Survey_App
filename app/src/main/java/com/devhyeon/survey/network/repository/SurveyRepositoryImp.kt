@@ -2,12 +2,13 @@ package com.devhyeon.survey.network.repository
 
 import com.devhyeon.survey.network.model.ApiResult
 import com.devhyeon.survey.network.model.Survey
+import com.devhyeon.survey.network.model.TitleResult
 import com.devhyeon.survey.network.service.SurveyService
 import retrofit2.http.Path
 
 class SurveyRepositoryImp(private val surveyService: SurveyService) : SurveyRepository {
 
-    override suspend fun getSurveys(): ApiResult {
+    override suspend fun getSurveys(): TitleResult {
         return surveyService.getSurveys()
     }
 

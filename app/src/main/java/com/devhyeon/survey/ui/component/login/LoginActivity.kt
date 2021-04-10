@@ -32,7 +32,7 @@ class LoginActivity : BaseActivity() {
     }
 
     private fun loginObserve() {
-        loginViewModel.loginData.observe(this) {
+        loginViewModel.loginData.observe(this@LoginActivity) {
             when(it) {
                 is Status.Run -> {
                     xml.loaderView.toVisible()

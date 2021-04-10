@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.devhyeon.survey.R
 import com.devhyeon.survey.databinding.ActivityHomeBinding
+import com.devhyeon.survey.network.SurveyViewModel
 import com.devhyeon.survey.ui.base.BaseActivity
 import com.devhyeon.survey.ui.component.home.fragment.HomeFragment
 import com.devhyeon.survey.ui.component.home.fragment.InfoFragment
@@ -17,9 +18,10 @@ import java.util.*
 class HomeActivity : BaseActivity() {
     private lateinit var xml: ActivityHomeBinding
     private val homeViewModel: HomeViewModel by viewModel()
+    private val surveyViewModel : SurveyViewModel by viewModel()
 
     private val homeFragment by lazy { HomeFragment() }
-    private val surveyFragment by lazy { SurveyFragment() }
+    private val surveyFragment by lazy { SurveyFragment(surveyViewModel) }
     private val infoFragment by lazy { InfoFragment() }
 
     override fun observeViewModel() {
@@ -52,7 +54,10 @@ class HomeActivity : BaseActivity() {
                     is Status.Success -> {
                         when(it.data) {
                             1 -> changeFragment(homeFragment)
-                            2 -> changeFragment(surveyFragment)
+                            2 -> {
+                                changeFragment(surveyFragment)
+                                surveyViewModel.getSurveys()
+                            }
                             3 -> changeFragment(infoFragment)
                         }
                     }
