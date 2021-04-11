@@ -1,5 +1,7 @@
 # Survey_App (개발중)
 
+현재 개발 단계 : ✔ 표시
+
 #### 목차
 1. WHY? : 언어 및 기술 선정
     - 왜 코틀린을 사용했는가?
@@ -12,7 +14,7 @@
     - 패키지 구조
     - BottomNavigation + [ FragmLayout(fragment) vs ViewPager2 ]
   
-3. 기능
+3. 기능 ✔
     - 설문등록
     - 설문조회
     - 설문상세조회
