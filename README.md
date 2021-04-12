@@ -47,7 +47,7 @@
   retrofit(retrfit~rxrefrofit) 이 현존하는 RestAPI 라이브러리들 중에서 이슈에 대한 대응과 편리성 등이 뛰어나다고 생각하였습니다. 또한 현재 많은 기업들과 API 사용을 하는 프로젝트들을 보아도 엄청나게 많은 곳에서 retrofit 을 사용하는 만큼 큰 고민없이 선정하게 되었습니다.
 
 ### 왜 ViewBinding 과 DataBinding 을 사용했는가?
-  Java 로 프로젝트를 하든 당시에 Viewvinding 와 DataBinding 을 알게 되었습니다. Kotlin 의 경우 Kotlin extensions 이 존재하지만 이 역시 null 에 safety 하지는 않기 때문에 ViewBinding 과       DataBinding 을 사용하기로 결정하였습니다.
+  Java 로 프로젝트를 하던 당시에 Viewvinding 와 DataBinding 을 알게 되었습니다. Kotlin 의 경우 Kotlin extensions 이 존재하지만 이 역시 null 에 safety 하지는 않기 때문에 ViewBinding 과       DataBinding 을 사용하기로 결정하였습니다.
   
   
 # 2. Think : 고민하고 또 고민하다..
@@ -83,7 +83,7 @@
   따라서, 2번의 구조를 선택! 하려 했으나.. 그랬으면 고민이라고 말하지 않았겠죠 ㅠㅠ
   
   2번의 case 는 위에서 보면 참 깔끔해보이지만, 막상 안드로이드스튜디오에서 보는순간 data, di, utils 등 수많은 패키지와 그 하위패키지 가 잔뜩 있는 곳에서 파일이 쌓이고 쌓일때마다..
-  뿜어져 나오는 아우라를 감당할 자신이 없어보였습니다. 사실 이정도 크기에서 몇 안되는 Activity 와 Fragment, ViewModel 만 가지고 따라가기 힘들다 할 수는 없겠지만, 그렇다고 이정도 크기에서 MVVM 의 장점을 살   리길 원하는 것 자체가 무리가 있다고 생각했습니다. ( 디자인패턴은 역시 상황에 따라 맞춰 쓰는게... MVVM 은 이 프로젝트에 적합하지 않은 것 같아요 휴...)
+  뿜어져 나오는 아우라를 감당할 자신이 없어보였습니다. 사실 이정도 크기에서 몇 안되는 Activity 와 Fragment, ViewModel 만 가지고 따라가기 힘들다 할 수는 없겠지만, 그렇다고 이정도 크기에서 MVVM 의 장점을 살리길 원하는 것 자체가 무리가 있다고 생각했습니다. ( 디자인패턴은 역시 상황에 따라 맞춰 쓰는게... MVVM 은 이 프로젝트에 적합하지 않은 것 같아요 휴...)
   
   위의 단계만 고민했다면 그래도 2번을 선택했겠지만,
   Data 의 패지를 만들고, Netwrok 패키지를 만들고, 그 과정에서 너무나 정신없어지는 느낌이 강하게 들어서 1번을 선택하고 진행하였습니다.
