@@ -15,42 +15,42 @@ import org.koin.android.viewmodel.ext.android.viewModel
  * */
 class LoginActivity : BaseActivity() {
     private val loginViewModel: LoginViewModel by viewModel()
-    private lateinit var xml: ActivityLoginBinding
+    private lateinit var binding: ActivityLoginBinding
 
     override fun observeViewModel() {
         loginObserve()
     }
     override fun initViewBinding() {
-        xml = ActivityLoginBinding.inflate(layoutInflater)
-        val view = xml.root
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        val view = binding.root
         setContentView(view)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        xml.login.setOnClickListener { loginViewModel.doLogin() }
+        binding.login.setOnClickListener { loginViewModel.doLogin() }
     }
 
     private fun loginObserve() {
         loginViewModel.loginData.observe(this@LoginActivity) {
             when(it) {
                 is Status.Run -> {
-                    xml.loaderView.toVisible()
-                    xml.login.toGone()
-                    xml.message.toGone()
+                    binding.loaderView.toVisible()
+                    binding.login.toGone()
+                    binding.message.toGone()
                 }
                 is Status.Success -> {
-                    xml.loaderView.toGone()
+                    binding.loaderView.toGone()
                     navigateToHomeScreen()
                 }
                 is Status.Failure -> {
-                    xml.loaderView.toGone()
-                    xml.login.toVisible()
-                    xml.message.toVisible()
+                    binding.loaderView.toGone()
+                    binding.login.toVisible()
+                    binding.message.toVisible()
                     if (it.errorCode == 1) {
-                        xml.root.showSnackbar(getString(R.string.default_error),1000)
+                        binding.root.showSnackbar(getString(R.string.default_error),1000)
                     } else if (it.errorCode == 2) {
-                        xml.root.showSnackbar(getString(R.string.no_internet),1000)
+                        binding.root.showSnackbar(getString(R.string.no_internet),1000)
                     }
                 }
             }

@@ -1,4 +1,4 @@
-package com.devhyeon.survey.usecase.base
+package com.devhyeon.survey.network.usecase.base
 
 abstract class ApiUseCase<Type, in Params>() where Type : Any {
 

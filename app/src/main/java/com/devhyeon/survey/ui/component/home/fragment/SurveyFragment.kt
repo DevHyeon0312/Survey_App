@@ -12,7 +12,6 @@ import com.devhyeon.survey.R
 import com.devhyeon.survey.databinding.FragmentHomeInfoBinding
 import com.devhyeon.survey.databinding.FragmentHomeSurveyBinding
 import com.devhyeon.survey.network.SurveyViewModel
-import com.devhyeon.survey.network.model.Survey
 import com.devhyeon.survey.ui.base.BaseFragment
 import com.devhyeon.survey.ui.component.home.adapter.TitlesAdapter
 import com.devhyeon.survey.utils.Status
@@ -22,7 +21,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 
 class SurveyFragment(val surveyViewModel : SurveyViewModel) : BaseFragment() {
     private var _binding: FragmentHomeSurveyBinding? = null
-    private val xml get() = _binding!!
+    private val binding get() = _binding!!
 
     private var mAdapter: TitlesAdapter? = TitlesAdapter()
 
@@ -39,9 +38,9 @@ class SurveyFragment(val surveyViewModel : SurveyViewModel) : BaseFragment() {
 
         observeViewModel()
 
-        xml.rvTitles.adapter = mAdapter
+        binding.rvTitles.adapter = mAdapter
 
-        return xml.root
+        return binding.root
     }
 
 
@@ -54,17 +53,17 @@ class SurveyFragment(val surveyViewModel : SurveyViewModel) : BaseFragment() {
         surveyViewModel.statusData.observe(this@SurveyFragment, Observer {
             when (it) {
                 is Status.Run -> {
-                    xml.loaderView.toVisible()
-                    xml.titlesView.toGone()
+                    binding.loaderView.toVisible()
+                    binding.titlesView.toGone()
                 }
                 is Status.Success -> {
-                    xml.loaderView.toGone()
-                    xml.titlesView.toVisible()
+                    binding.loaderView.toGone()
+                    binding.titlesView.toVisible()
                     mAdapter?.mPostList = it.data!!
                 }
                 is Status.Failure -> {
-                    xml.loaderView.toVisible()
-                    xml.titlesView.toGone()
+                    binding.loaderView.toVisible()
+                    binding.titlesView.toGone()
                 }
             }
         })

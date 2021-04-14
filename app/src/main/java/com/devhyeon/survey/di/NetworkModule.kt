@@ -4,8 +4,9 @@ import com.devhyeon.survey.BASE_URL
 import com.devhyeon.survey.network.repository.SurveyRepository
 import com.devhyeon.survey.network.repository.SurveyRepositoryImp
 import com.devhyeon.survey.network.service.SurveyService
-import com.devhyeon.survey.usecase.SurveyDetail
-import com.devhyeon.survey.usecase.SurveyTitle
+import com.devhyeon.survey.network.usecase.GetSurveyDetail
+import com.devhyeon.survey.network.usecase.GetSurveyTitle
+import com.devhyeon.survey.network.usecase.PostSurveyCreate
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -53,10 +54,14 @@ fun createSurveyRepository(apiService: SurveyService): SurveyRepository {
     return SurveyRepositoryImp(apiService)
 }
 
-fun createSurveyTitle(surveyRepository: SurveyRepository): SurveyTitle {
-    return SurveyTitle(surveyRepository)
+fun createSurveyTitle(surveyRepository: SurveyRepository): GetSurveyTitle {
+    return GetSurveyTitle(surveyRepository)
 }
 
-fun createSurveyDetail(surveyRepository: SurveyRepository): SurveyDetail {
-    return SurveyDetail(surveyRepository)
+fun createSurveyDetail(surveyRepository: SurveyRepository): GetSurveyDetail {
+    return GetSurveyDetail(surveyRepository)
+}
+
+fun createSurveyAdd(surveyRepository: SurveyRepository): PostSurveyCreate {
+    return PostSurveyCreate(surveyRepository)
 }

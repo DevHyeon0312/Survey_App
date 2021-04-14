@@ -1,11 +1,9 @@
 package com.devhyeon.survey.network.service
 
+import com.devhyeon.survey.data.dto.Survey
 import com.devhyeon.survey.network.model.ApiResult
-import com.devhyeon.survey.network.model.Survey
 import com.devhyeon.survey.network.model.TitleResult
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface SurveyService {
     /**
@@ -23,6 +21,8 @@ interface SurveyService {
     /**
      * 설문 등록
      * */
+    @POST("/survey/createSurvey")
+    suspend fun postCreateSurvey(@Body survey : Any?) : ApiResult
 
     /**
      * 설문 참여

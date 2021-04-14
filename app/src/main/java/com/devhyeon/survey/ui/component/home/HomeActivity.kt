@@ -16,7 +16,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 import java.util.*
 
 class HomeActivity : BaseActivity() {
-    private lateinit var xml: ActivityHomeBinding
+    private lateinit var binding: ActivityHomeBinding
     private val homeViewModel: HomeViewModel by viewModel()
     private val surveyViewModel : SurveyViewModel by viewModel()
 
@@ -29,15 +29,15 @@ class HomeActivity : BaseActivity() {
     }
 
     override fun initViewBinding() {
-        xml = ActivityHomeBinding.inflate(layoutInflater)
-        val view = xml.root
+        binding = ActivityHomeBinding.inflate(layoutInflater)
+        val view = binding.root
         setContentView(view)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        xml.bottomNavigationView.run {
+        binding.bottomNavigationView.run {
             setOnNavigationItemSelectedListener {
                 homeViewModel.clickNavigation(it.itemId)
                 true

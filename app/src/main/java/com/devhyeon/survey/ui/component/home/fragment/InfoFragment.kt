@@ -17,7 +17,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 
 class InfoFragment : BaseFragment() {
     private var _binding: FragmentHomeInfoBinding? = null
-    private val xml get() = _binding!!
+    private val binding get() = _binding!!
 
     override fun observeViewModel() {
         TODO("Not yet implemented")
@@ -32,7 +32,7 @@ class InfoFragment : BaseFragment() {
 
         devHyeonInit()
 
-        return xml.root
+        return binding.root
     }
 
     override fun onDestroyView() {
@@ -41,9 +41,9 @@ class InfoFragment : BaseFragment() {
     }
 
     fun devHyeonInit() {
-        Glide.with(this).load(devImage).into(xml.ivDeveloper)
-        xml.tvDevName.text = devName
-        xml.tvDevType.text = devType
-        xml.tvDevGit.text = devGit
+        Glide.with(this).load(devImage).into(binding.ivDeveloper)
+        binding.tvDevName.text = devName
+        binding.tvDevType.text = devType
+        binding.tvDevGit.text = devGit
     }
 }

@@ -15,7 +15,7 @@ import com.devhyeon.survey.ui.component.home.HomeActivity
 
 class HomeFragment : BaseFragment() {
     private var _binding: FragmentHomeHomeBinding? = null
-    private val xml get() = _binding!!
+    private val binding get() = _binding!!
 
     override fun observeViewModel() {
         TODO("Not yet implemented")
@@ -27,9 +27,9 @@ class HomeFragment : BaseFragment() {
         savedInstanceState: Bundle?,
     ): View? {
         _binding = FragmentHomeHomeBinding.inflate(inflater, container, false)
-        xml.textView.text="어서오세요,\n설문생성과 참여로 마음껏 즐겨보세요"
-        xml.button2.setOnClickListener { navigateToCreateScreen() }
-        return xml.root
+        binding.textView.text="어서오세요,\n설문생성과 참여로 마음껏 즐겨보세요"
+        binding.button2.setOnClickListener { navigateToCreateScreen() }
+        return binding.root
     }
 
     override fun onDestroyView() {

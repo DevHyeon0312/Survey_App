@@ -4,6 +4,6 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class TitleResult(
-    val resultData : List<Survey>,
+    val resultData : List<SurveyTitle>,
     val resultStatus : Any?
 )
