@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="question"
+            type="com.devhyeon.survey.data.dto.Question" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{question.question_msg}"
+            android:textSize="24sp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <RadioButton
+                android:id="@+id/radioButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{question.answers.size()>0 ? question.answers.get(0).answer_msg : question.question_msg}"
+                android:visibility="@{question.answers.size()>0 ? View.VISIBLE : View.GONE}"/>
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{question.answers.size()>1?question.answers.get(1).answer_msg:question.question_msg}"
+                android:visibility="@{question.answers.size()>1 ? View.VISIBLE : View.GONE}"/>
+
+            <RadioButton
+                android:id="@+id/radioButton3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{question.answers.size()>2?question.answers.get(2).answer_msg:question.question_msg}"
+                android:visibility="@{question.answers.size()>2 ? View.VISIBLE : View.GONE}" />
+
+            <RadioButton
+                android:id="@+id/radioButton4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{question.answers.size()>3?question.answers.get(3).answer_msg:question.question_msg}"
+                android:visibility="@{question.answers.size()>3? View.VISIBLE : View.GONE}" />
+        </RadioGroup>
+
+    </LinearLayout>
+
+</layout>
