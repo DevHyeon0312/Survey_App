@@ -28,12 +28,11 @@
             android:theme="@style/Theme.SurveyFullScreen">
         </activity>
 
-        <activity android:name=".ui.component.home.HomeActivity">
-        </activity>
+        <activity android:name=".ui.component.home.HomeActivity"/>
 
-        <activity android:name=".ui.component.create.CreateActivity">
-        </activity>
+        <activity android:name=".ui.component.create.CreateActivity"/>
 
+        <activity android:name=".ui.component.detail.DetailActivity"/>
     </application>
 
 </manifest>

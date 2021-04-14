@@ -37,7 +37,7 @@ class HomeFragment : BaseFragment() {
         _binding = null
     }
 
-    /** 홈화면으로 이동 */
+    /** 생성화면으로 이동 */
     private fun navigateToCreateScreen() {
         activity?.let{
             val intent = Intent (it, CreateActivity::class.java)

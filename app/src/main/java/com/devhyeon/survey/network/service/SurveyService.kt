@@ -1,7 +1,8 @@
 package com.devhyeon.survey.network.service
 
-import com.devhyeon.survey.data.dto.Survey
+import com.devhyeon.survey.network.model.Survey
 import com.devhyeon.survey.network.model.ApiResult
+import com.devhyeon.survey.network.model.SurveyResult
 import com.devhyeon.survey.network.model.TitleResult
 import retrofit2.http.*
 
@@ -16,7 +17,7 @@ interface SurveyService {
      * 설문 상세 조회
      * */
     @GET("/survey/getSurveyDetail")
-    suspend fun getSurveyDetail(@Query("titleId") titleID : Any?) : ApiResult
+    suspend fun getSurveyDetail(@Query("titleId") titleID : Any?) : SurveyResult
 
     /**
      * 설문 등록

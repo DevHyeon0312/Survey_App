@@ -1,17 +1,12 @@
 package com.devhyeon.survey.ui.component.create
 
-import android.app.Activity
-import android.content.Context
 import android.os.Bundle
-import android.view.View
-import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import com.devhyeon.survey.data.dto.Survey
+import com.devhyeon.survey.network.model.Survey
 import com.devhyeon.survey.databinding.ActivitySurveyCreateBinding
 import com.devhyeon.survey.network.SurveyViewModel
 import com.devhyeon.survey.ui.base.BaseActivity
 import com.devhyeon.survey.ui.component.create.adapter.QuestionAdapter
-import com.devhyeon.survey.ui.component.home.adapter.TitlesAdapter
 import com.devhyeon.survey.utils.Status
 import com.devhyeon.survey.utils.hideKeyboard
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -47,7 +42,6 @@ class CreateActivity : BaseActivity() {
                 binding.textView4.text.toString(),
                 mAdapter!!.mPostList
             )
-
             surveyViewModel.postCreateSurvey(survey)
             System.out.println(survey.toString())
         }

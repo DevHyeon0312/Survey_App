@@ -1,5 +1,6 @@
 package com.devhyeon.survey.ui.component.home.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,8 @@ import com.devhyeon.survey.data.developer.devType
 import com.devhyeon.survey.databinding.FragmentHomeInfoBinding
 import com.devhyeon.survey.network.SurveyViewModel
 import com.devhyeon.survey.ui.base.BaseFragment
+import com.devhyeon.survey.ui.component.create.CreateActivity
+import com.devhyeon.survey.ui.component.detail.DetailActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class InfoFragment : BaseFragment() {
@@ -46,4 +49,5 @@ class InfoFragment : BaseFragment() {
         binding.tvDevType.text = devType
         binding.tvDevGit.text = devGit
     }
+
 }

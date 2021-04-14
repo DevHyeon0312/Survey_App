@@ -1,4 +1,4 @@
-package com.devhyeon.survey.data.dto
+package com.devhyeon.survey.network.model
 
 import com.squareup.moshi.JsonClass
 

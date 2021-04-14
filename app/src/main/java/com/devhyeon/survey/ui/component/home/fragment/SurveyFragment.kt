@@ -1,5 +1,6 @@
 package com.devhyeon.survey.ui.component.home.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import com.devhyeon.survey.databinding.FragmentHomeInfoBinding
 import com.devhyeon.survey.databinding.FragmentHomeSurveyBinding
 import com.devhyeon.survey.network.SurveyViewModel
 import com.devhyeon.survey.ui.base.BaseFragment
+import com.devhyeon.survey.ui.component.detail.DetailActivity
 import com.devhyeon.survey.ui.component.home.adapter.TitlesAdapter
 import com.devhyeon.survey.utils.Status
 import com.devhyeon.survey.utils.toGone
@@ -68,4 +70,5 @@ class SurveyFragment(val surveyViewModel : SurveyViewModel) : BaseFragment() {
             }
         })
     }
+
 }

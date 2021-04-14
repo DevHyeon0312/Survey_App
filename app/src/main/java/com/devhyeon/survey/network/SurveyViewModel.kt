@@ -3,9 +3,7 @@ package com.devhyeon.survey.network
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.devhyeon.survey.network.model.ApiResult
-import com.devhyeon.survey.network.model.SurveyTitle
-import com.devhyeon.survey.network.model.TitleResult
+import com.devhyeon.survey.network.model.*
 import com.devhyeon.survey.network.usecase.GetSurveyDetail
 import com.devhyeon.survey.network.usecase.GetSurveyTitle
 import com.devhyeon.survey.network.usecase.PostSurveyCreate
@@ -20,6 +18,8 @@ class SurveyViewModel constructor(
 
     val statusData = MutableLiveData<Status<List<SurveyTitle>>>()
     val createdData = MutableLiveData<Status<ApiResult>>()
+
+    val detailData = MutableLiveData<Status<SurveyResult>>()
 
     fun getSurveys() {
         viewModelScope.launch {
@@ -38,13 +38,30 @@ class SurveyViewModel constructor(
     fun postCreateSurvey(params: Any?) {
         viewModelScope.launch {
             var result : ApiResult? = null
-            kotlin.runCatching {
+            runCatching {
                 result = surveyCreate.run(params)
                 statusData.value = Status.Run()
             }.onSuccess {
                 createdData.value = Status.Success(result!!)
             }.onFailure {
                 createdData.value = Status.Failure(-1)
+            }
+        }
+    }
+
+    fun getDetailSurvey(params: Any?) {
+        viewModelScope.launch {
+            var result : SurveyResult? = null
+            runCatching {
+                System.out.println("Run")
+                result = surveyDetail.run(params)
+                detailData.value = Status.Run()
+            }.onSuccess {
+                System.out.println("ViewModel:  "+result)
+                detailData.value = Status.Success(result!!)
+            }.onFailure {
+                System.out.println("Failure")
+                detailData.value = Status.Failure(-1)
             }
         }
     }

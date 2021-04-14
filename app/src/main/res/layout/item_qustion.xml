@@ -7,7 +7,7 @@
         <import type="android.view.View" />
         <variable
             name="question"
-            type="com.devhyeon.survey.data.dto.Question" />
+            type="com.devhyeon.survey.network.model.Question" />
     </data>
 
     <LinearLayout

@@ -6,10 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.devhyeon.survey.R
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import com.devhyeon.survey.data.dto.Question
+import com.devhyeon.survey.network.model.Question
 import com.devhyeon.survey.databinding.ItemQustionBinding
-import okhttp3.internal.notify
-import kotlin.properties.Delegates
 
 
 class QuestionAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -29,6 +27,11 @@ class QuestionAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     fun addItem(question: Question) {
         question.question_id = mPostList.size+1
         mPostList.add(question)
+        notifyDataSetChanged()
+    }
+
+    fun addItem(questions: List<Question> ) {
+        mPostList.addAll(questions)
         notifyDataSetChanged()
     }
 
