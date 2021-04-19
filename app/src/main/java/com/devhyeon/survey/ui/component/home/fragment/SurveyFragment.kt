@@ -21,9 +21,11 @@ import com.devhyeon.survey.utils.toGone
 import com.devhyeon.survey.utils.toVisible
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class SurveyFragment(val surveyViewModel : SurveyViewModel) : BaseFragment() {
+class SurveyFragment() : BaseFragment() {
     private var _binding: FragmentHomeSurveyBinding? = null
     private val binding get() = _binding!!
+
+    private val surveyViewModel : SurveyViewModel by viewModel()
 
     private var mAdapter: TitlesAdapter? = TitlesAdapter()
 
@@ -37,6 +39,8 @@ class SurveyFragment(val surveyViewModel : SurveyViewModel) : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentHomeSurveyBinding.inflate(inflater, container, false)
+
+        surveyViewModel.getSurveys()
 
         observeViewModel()
 

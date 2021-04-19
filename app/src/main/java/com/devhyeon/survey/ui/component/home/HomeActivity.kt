@@ -18,10 +18,9 @@ import java.util.*
 class HomeActivity : BaseActivity() {
     private lateinit var binding: ActivityHomeBinding
     private val homeViewModel: HomeViewModel by viewModel()
-    private val surveyViewModel : SurveyViewModel by viewModel()
 
     private val homeFragment by lazy { HomeFragment() }
-    private val surveyFragment by lazy { SurveyFragment(surveyViewModel) }
+    private val surveyFragment by lazy { SurveyFragment() }
     private val infoFragment by lazy { InfoFragment() }
 
     override fun observeViewModel() {
@@ -36,7 +35,6 @@ class HomeActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding.bottomNavigationView.run {
             setOnNavigationItemSelectedListener {
                 homeViewModel.clickNavigation(it.itemId)
@@ -46,6 +44,7 @@ class HomeActivity : BaseActivity() {
         }
     }
 
+
     private fun navigationObserve() {
         with(homeViewModel) {
             navigationData.observe(this@HomeActivity, Observer {
@@ -53,12 +52,16 @@ class HomeActivity : BaseActivity() {
                     is Status.Run -> {}
                     is Status.Success -> {
                         when(it.data) {
-                            1 -> changeFragment(homeFragment)
+                            1 -> {
+                                changeFragment(homeFragment)
+
+                            }
                             2 -> {
                                 changeFragment(surveyFragment)
-                                surveyViewModel.getSurveys()
                             }
-                            3 -> changeFragment(infoFragment)
+                            3 -> {
+                                changeFragment(infoFragment)
+                            }
                         }
                     }
                     is Status.Failure -> {}
