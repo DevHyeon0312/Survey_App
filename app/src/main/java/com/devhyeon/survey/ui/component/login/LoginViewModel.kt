@@ -10,22 +10,22 @@ import com.devhyeon.survey.utils.*
 import kotlinx.coroutines.*
 
 class LoginViewModel(private val ctx: Context) : ViewModel() {
-    val loginData = MutableLiveData<Status<String>>()
+    val loginData = MutableLiveData<Status<Long>>()
 
     fun doLogin() {
         viewModelScope.launch {
             if (ctx.isNetworkAvailable()) {
                 runCatching {
-                    val id : String = getNowDate()
+                    val id : Long = getNowDate().toLong()
                     loginData.value = Status.Run(id)
-                    if (getPreferencesString(context = ctx, key = "ID", defaultValue = "").isEmpty()) {
-                        setPreferencesString(context = ctx, key = "ID", value = id)
+                    if (getPreferencesLong(context = ctx, key = "ID", defaultValue = 0L) == 0L) {
+                        setPreferencesLong(context = ctx, key = "ID", value = id)
                     }
                 }.onSuccess {
                     withContext(Dispatchers.Default) {
                         delay(SPLASH_DELAY.toLong())
                     }
-                    loginData.value = Status.Success(getPreferencesString(context = ctx, key = "ID", defaultValue = ""))
+                    loginData.value = Status.Success(getPreferencesLong(context = ctx, key = "ID", defaultValue = 0L))
                 }.onFailure {
                     loginData.value = Status.Failure(1)
                     it.printStackTrace()

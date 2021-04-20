@@ -1,9 +1,6 @@
 package com.devhyeon.survey.network.repository
 
-import com.devhyeon.survey.network.model.ApiResult
-import com.devhyeon.survey.network.model.Survey
-import com.devhyeon.survey.network.model.SurveyResult
-import com.devhyeon.survey.network.model.TitleResult
+import com.devhyeon.survey.network.model.*
 import com.devhyeon.survey.network.service.SurveyService
 
 class SurveyRepositoryImp(private val surveyService: SurveyService) : SurveyRepository {
@@ -19,4 +16,13 @@ class SurveyRepositoryImp(private val surveyService: SurveyService) : SurveyRepo
     override suspend fun postSurveyCreate(survey: Any?): ApiResult {
         return surveyService.postCreateSurvey(survey)
     }
+
+    override suspend fun postTake(take : Any?) : TakeResult {
+        return surveyService.postTake(take)
+    }
+
+    override suspend fun getSurveyTakeResult(userId:Any?, titleId:Any?) : TakeResult {
+        return surveyService.getSurveyTakeResult(userId,titleId)
+    }
+
 }

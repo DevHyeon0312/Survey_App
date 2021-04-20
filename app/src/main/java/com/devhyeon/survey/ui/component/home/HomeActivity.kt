@@ -1,6 +1,8 @@
 package com.devhyeon.survey.ui.component.home
 
 import android.os.Bundle
+import androidx.annotation.IntegerRes
+import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.devhyeon.survey.R
@@ -35,6 +37,7 @@ class HomeActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        println("onCreate")
         binding.bottomNavigationView.run {
             setOnNavigationItemSelectedListener {
                 homeViewModel.clickNavigation(it.itemId)
@@ -43,7 +46,6 @@ class HomeActivity : BaseActivity() {
             selectedItemId = R.id.menu_home
         }
     }
-
 
     private fun navigationObserve() {
         with(homeViewModel) {

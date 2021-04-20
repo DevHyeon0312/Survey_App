@@ -23,7 +23,7 @@ val AppModule = module {
     }
 
     viewModel {
-        SurveyViewModel(get(), get(), get())
+        SurveyViewModel(get(), get(), get(), get() , get())
     }
 
     single { createSurveyTitle(get()) }
@@ -33,5 +33,9 @@ val AppModule = module {
     single { createSurveyAdd(get())}
 
     single { createSurveyRepository(get()) }
+
+    single { createSurveyTake(get()) }
+
+    single { createSurveyTakeResult(get()) }
 
 }
