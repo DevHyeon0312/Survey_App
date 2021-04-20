@@ -11,6 +11,7 @@
     </data>
 
     <LinearLayout
+        android:id="@+id/ll_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -27,6 +28,7 @@
             android:textSize="24sp" />
 
         <RadioGroup
+            android:id="@+id/radioGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp">
@@ -36,14 +38,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@{question.answers.size()>0 ? question.answers.get(0).answer_msg : question.question_msg}"
-                android:visibility="@{question.answers.size()>0 ? View.VISIBLE : View.GONE}"/>
+                android:visibility="@{question.answers.size()>0 ? View.VISIBLE : View.GONE}" />
 
             <RadioButton
                 android:id="@+id/radioButton2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@{question.answers.size()>1?question.answers.get(1).answer_msg:question.question_msg}"
-                android:visibility="@{question.answers.size()>1 ? View.VISIBLE : View.GONE}"/>
+                android:visibility="@{question.answers.size()>1 ? View.VISIBLE : View.GONE}" />
 
             <RadioButton
                 android:id="@+id/radioButton3"

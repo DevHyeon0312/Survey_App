@@ -17,7 +17,7 @@ class SurveyRepositoryImp(private val surveyService: SurveyService) : SurveyRepo
         return surveyService.postCreateSurvey(survey)
     }
 
-    override suspend fun postTake(take : Any?) : TakeResult {
+    override suspend fun postTake(take : Any?) : ApiResult {
         return surveyService.postTake(take)
     }
 

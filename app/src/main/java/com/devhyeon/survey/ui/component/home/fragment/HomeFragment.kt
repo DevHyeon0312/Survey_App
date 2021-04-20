@@ -29,11 +29,13 @@ class HomeFragment : BaseFragment() {
         _binding = FragmentHomeHomeBinding.inflate(inflater, container, false)
         binding.textView.text="어서오세요,\n설문생성과 참여로 마음껏 즐겨보세요"
         binding.button2.setOnClickListener { navigateToCreateScreen() }
+        println("onCreateView")
         return binding.root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
+        println("onDestroyView")
         _binding = null
     }
 
@@ -43,5 +45,30 @@ class HomeFragment : BaseFragment() {
             val intent = Intent (it, CreateActivity::class.java)
             it.startActivity(intent)
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        println("onCreate")
+    }
+
+    override fun onStart() {
+        super.onStart()
+        println("onStart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        println("onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        println("onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        println("onStop")
     }
 }

@@ -18,7 +18,7 @@ interface SurveyService {
 
     /** 설문 참여 */
     @POST("/survey/addResult")
-    suspend fun postTake(@Body take : Any?) : TakeResult
+    suspend fun postTake(@Body take : Any?) : ApiResult
 
     /** 설문 참여 결과 */
     @GET("/survey/getResult")

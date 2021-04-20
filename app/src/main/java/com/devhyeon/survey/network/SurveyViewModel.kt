@@ -19,8 +19,8 @@ class SurveyViewModel constructor(
     val statusData = MutableLiveData<Status<List<SurveyTitle>>>()
     val createdData = MutableLiveData<Status<ApiResult>>()
     val detailData = MutableLiveData<Status<SurveyResult>>()
-
     val takeResultData = MutableLiveData<Status<TakeResult>>()
+    val takeData = MutableLiveData<Status<ApiResult>>()
 
     fun getSurveys() {
         viewModelScope.launch {
@@ -81,6 +81,24 @@ class SurveyViewModel constructor(
             }.onFailure {
                 System.out.println("Failure")
                 takeResultData.value = Status.Failure(-1)
+            }
+        }
+    }
+
+    fun postTakeSurvey(params: Any?, cnt:Int, fullCnt:Int) {
+        viewModelScope.launch {
+            var result : ApiResult? = null
+            runCatching {
+                if (cnt != fullCnt) {
+                    result = surveyTake.run(null)
+                } else {
+                    result = surveyTake.run(params)
+                }
+                takeData.value = Status.Run()
+            }.onSuccess {
+                takeData.value = Status.Success(result!!)
+            }.onFailure {
+                takeData.value = Status.Failure(-1)
             }
         }
     }

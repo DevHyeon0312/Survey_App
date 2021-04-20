@@ -11,7 +11,7 @@ interface SurveyRepository {
 
     suspend fun postSurveyCreate(survey: Any?) : ApiResult
 
-    suspend fun postTake(take : Any?) : TakeResult
+    suspend fun postTake(take : Any?) : ApiResult
 
     suspend fun getSurveyTakeResult(userId : Any?, titleId : Any?) : TakeResult
 

@@ -55,13 +55,15 @@ class HomeActivity : BaseActivity() {
                     is Status.Success -> {
                         when(it.data) {
                             1 -> {
+                                println("homeFragment Click")
                                 changeFragment(homeFragment)
-
                             }
                             2 -> {
+                                println("surveyFragment Click")
                                 changeFragment(surveyFragment)
                             }
                             3 -> {
+                                println("infoFragment Click")
                                 changeFragment(infoFragment)
                             }
                         }

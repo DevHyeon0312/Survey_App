@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.devhyeon.survey.network.model.Question
 import com.devhyeon.survey.databinding.ItemQustionBinding
+import com.devhyeon.survey.network.model.UserAns
 
 
 class QuestionAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
