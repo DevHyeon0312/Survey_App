@@ -77,7 +77,7 @@ class SurveyViewModel constructor(
                 takeResultData.value = Status.Run()
             }.onSuccess {
                 System.out.println("ViewModel:  "+result)
-                takeResultData.value = Status.Run(result!!)
+                takeResultData.value = Status.Success(result!!)
             }.onFailure {
                 System.out.println("Failure")
                 takeResultData.value = Status.Failure(-1)
