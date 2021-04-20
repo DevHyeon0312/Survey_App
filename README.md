@@ -109,18 +109,20 @@
     5. 참여한 설문 결과보기
 # 4. 상황별 간단 설명 및 이미지
     1. 인트로 : 1sec 간 Intro 화면 이후 Login 으로 넘어갑니다.
+<img src="https://user-images.githubusercontent.com/72678200/115424582-ccef4300-a239-11eb-8113-68fc79788c6a.png" width="20%" height="20%">
 
     2. 로그인 : 로그인하는 순간에 ID 를 자동발급하며, 이때는 Device 시간으로 생성합니다.
-
+<img src="https://user-images.githubusercontent.com/72678200/115424544-c4970800-a239-11eb-9124-6ce767c2c721.png" width="20%" height="20%"> <img src="https://user-images.githubusercontent.com/72678200/115425201-5f8fe200-a23a-11eb-918f-eea089d07b25.png" width="20%" height="20%">
+      
     3. 홈 : 설문 생성으로 넘어갈 수 있습니다.
+<img src="https://user-images.githubusercontent.com/72678200/115425279-733b4880-a23a-11eb-8696-04e130e76f35.png" width="20%" height="20%"> <img src="https://user-images.githubusercontent.com/72678200/115425287-759da280-a23a-11eb-89cc-97ba6b16c091.png" width="20%" height="20%"> 
 
     4. 설문참여 : 생성된 설문들의 제목을 보여줍니다.
+<img src="https://user-images.githubusercontent.com/72678200/115425294-77fffc80-a23a-11eb-88c3-f7f52cac4427.png" width="20%" height="20%">
 
     5. 설문참여 : 4항목에서 아이템을 클릭한 후에 미참여 설문이면 보여주는 화면입니다.
-    
     6. 참여결과 : 4항목에서 아이템을 클릭한 후에 참여한 설문이면 결과를 보여줍니다.
-
-    7. 개발정보 : 사용한 라이브러리 등에 대한 항목을 보여줍니다.
+<img src="https://user-images.githubusercontent.com/72678200/115425786-e218a180-a23a-11eb-9cb7-993a470349f2.png" width="20%" height="20%">
 
 # 5. 실행영상
 
